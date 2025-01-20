@@ -4,38 +4,138 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
+  min-height: 100vh;
 }
 
 .app {
   text-align: center;
-  color: #005eb8; /* NHS Blue */
+  color: #005eb8;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .app-header {
-  background-color: #005eb8; /* NHS Blue */
+  background-color: #005eb8;
   color: white;
   padding: 20px;
 }
 
 .app-header h1 {
   margin: 0;
+  font-size: 2.5em;
 }
 
-.symptom-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 20px auto;
-  max-width: 600px;
+.app-main {
+  flex: 1;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.symptom-item {
-  padding: 15px 20px;
-  margin: 10px 0;
-  border: 2px solid transparent;
+.search-section {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search-input {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 2px solid #005eb8;
+  border-radius: 5px;
+  width: 300px;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 94, 184, 0.5);
+  border-color: #003b6f;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #005eb8;
+  color: white;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 18px;
+  transition: background-color 0.3s;
 }
 
-.symptom-item.green {
-  background-color: #e8fce8; /* Green background for curable symptoms */\n  border-color: #34a853; /* Green border */\n  color: #34a853; /* Green text */\n}\n\n.symptom-item.red {\n  background-color: #fdeaea; /* Red background for hard-to-cure symptoms */\n  border-color: #ea4335; /* Red border */\n  color: #ea4335; /* Red text */\n}\n\n.symptom-item:hover {\n  background-color: #d6d6d6; /* Hover effect */\n}\n\n.symptom-details {\n  margin-top: 20px;\n  padding: 20px;\n  border: 2px solid #005eb8; /* NHS Blue */\n  border-radius: 5px;\n  background-color: white;\n  color: #005eb8; /* NHS Blue */\n}\n\nbutton {\n  padding: 10px 20px;\n  font-size: 16px;\n  background-color: #005eb8; /* NHS Blue */\n  color: white;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  margin-top: 20px;\n}\n\nbutton:hover {\n  background-color: #003b6f; /* Darker NHS Blue */\n}\n\n.app-footer {\n  margin-top: 20px;\n  background-color: #e8e8e8;\n  padding: 10px;\n  color: #666;\n}\n```\n\n### File Structure\nHere's the recommended file structure for the project:\n\n```\nproject/\n├── src/\n│   ├── components/\n│   │   ├── SymptomCheckerApp.jsx\n│   ├── App.css\n│   ├── main.jsx\n├── public/\n│   ├── index.html\n├── package.json\n├── vite.config.js\n```\n\n### Setting Up the Project\n1. **Install React and Vite**:\n   ```bash\n   npm create vite@latest symptom-checker-app --template react\n   cd symptom-checker-app\n   npm install\n   ```\n\n2. **Replace the Files**:\n   - Replace the default `src/main.jsx` with the following:\n     ```javascript\n     import React from \"react\";\n     import ReactDOM from \"react-dom/client\";\n     import SymptomCheckerApp from \"./components/SymptomCheckerApp\";\n     import \"./App.css\";\n\n     ReactDOM.createRoot(document.getElementById(\"root\")).render(\n       <React.StrictMode>\n         <SymptomCheckerApp />\n       </React.StrictMode>\n     );\n     ```\n\n3. **Start the Development Server**:\n   ```bash\n   npm run dev\n   ```\n\nThis setup will create a simple symptom checker app with a user-friendly UI styled according to NHS guidelines. Let me know if you need any further enhancements!
+button:hover {
+  background-color: #003b6f;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #ea4335;
+  margin: 10px 0;
+}
+
+.condition-details {
+  margin: 20px auto;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.condition-details.green {
+  border-left: 5px solid #34a853;
+}
+
+.condition-details.red {
+  border-left: 5px solid #ea4335;
+}
+
+.condition-details h2 {
+  color: #005eb8;
+  margin-bottom: 20px;
+}
+
+.condition-info {
+  text-align: left;
+}
+
+.condition-info h3 {
+  color: #005eb8;
+  margin: 20px 0 10px;
+}
+
+.condition-info ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.condition-info li {
+  margin: 5px 0;
+  color: #333;
+}
+
+.ai-advice {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+  border-left: 3px solid #005eb8;
+  margin-top: 10px;
+}
+
+.app-footer {
+  background-color: #e8e8e8;
+  padding: 15px;
+  margin-top: auto;
+}
+
+.app-footer p {
+  color: #666;
+  margin: 0;
+  font-size: 0.9em;
+}
