@@ -1,8 +1,8 @@
 import React from 'react';
 import SymptomCheckerApp from './components/SymptomCheckerApp';
 
-function App() {
+const App = () => {
   return <SymptomCheckerApp />;
-}
+};
 
 export default App;
