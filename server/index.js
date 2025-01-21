@@ -16,7 +16,7 @@ const port = 5000;
 
 // Initialize OpenAI with your API key
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 app.use(cors());
@@ -39,16 +39,17 @@ app.post('/api/get-advice', async (req, res) => {
     Keep the response concise and professional.`;
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: 'gpt-3.5-turbo',
       messages: [
-        { 
-          "role": "system", 
-          "content": "You are a medical AI assistant providing advice about health conditions. Always include a disclaimer about consulting healthcare professionals."
+        {
+          role: 'system',
+          content:
+            'You are a medical AI assistant providing advice about health conditions. Always include a disclaimer about consulting healthcare professionals.',
         },
         {
-          "role": "user",
-          "content": prompt
-        }
+          role: 'user',
+          content: prompt,
+        },
       ],
       max_tokens: 500,
       temperature: 0.7,
